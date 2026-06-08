@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify, session
 from flask_mysqldb import MySQL
 from flask_cors import CORS
+import time
 
 app = Flask(__name__)
 CORS(app, supports_credentials=True)
@@ -8,10 +9,24 @@ app.secret_key = 'mysecretkey'
 
 app.config['MYSQL_HOST'] = 'mysql'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = '1234'
+app.config['MYSQL_PASSWORD'] = 'q1w2e3'
 app.config['MYSQL_DB'] = 'memories'
 
 mysql = MySQL(app)
+
+# MySQL 준비될 때까지 대기
+def wait_for_db():
+    with app.app_context():
+        for i in range(10):
+            try:
+                mysql.connection.cursor()
+                print("MySQL 연결 성공!")
+                return
+            except:
+                print(f"MySQL 대기중... ({i+1}/10)")
+                time.sleep(3)
+
+wait_for_db()
 
 # 회원가입
 @app.route('/signup', methods=['POST'])

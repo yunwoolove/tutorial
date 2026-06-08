@@ -10,7 +10,9 @@ ENV MYSQL_DATABASE=memories
 # 3. 로컬 PC의 설정 파일 및 초기화 스크립트를 컨테이너 내부로 복사 (굽기)
 COPY ./mysql/conf/my.cnf /etc/mysql/conf.d/my.cnf
 
+COPY ./memories.sql /docker-entrypoint-initdb.d/memories.sql
+
 VOLUME [ "/var/lib/mysql"]
 
 # 4. 컨테이너가 켜질 때 실행할 기본 명령어 (한글 깨짐 방지 설정)
-CMD ["mysqld", "—character-set-server=utf8mb4", "—collation-server=utf8mb4_unicode_ci"]
+CMD ["mysqld", "--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]

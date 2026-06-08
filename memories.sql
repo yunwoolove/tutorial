@@ -1,7 +1,4 @@
-create database memories;
-use memories;
-CREATE DATABASE memories;
-USE memories;
+
 
 -- 1. 유저 테이블 (이름 글자수 제한 완화, 비밀번호 암호화 대비 글자수 확장)
 CREATE TABLE users (
