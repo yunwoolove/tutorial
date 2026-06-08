@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: web/Dockerfile
     ports:
-      - "70:80"
+      - "90:80"
     depends_on:
       - flask
     networks:
