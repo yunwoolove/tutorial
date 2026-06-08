@@ -1,0 +1,6 @@
+# 깃허브 페이지 빌드 시 도커 관련 파일 및 폴더 무시하기
+exclude:
+  - docker-compose.yml
+  - mysql/
+  - web/
+  - flask/
