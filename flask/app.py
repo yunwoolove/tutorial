@@ -37,7 +37,7 @@ def signup():
         cur.execute("INSERT INTO users (name, password) VALUES (%s, %s)",
                     (data['name'], data['pw']))
         mysql.connection.commit()
-        return jsonify({'ok': True})
+        return login()
     except:
         return jsonify({'ok': False, 'msg': '이미 있는 이름이에요'})
 
@@ -139,4 +139,4 @@ def post_comment(review_id):
     return jsonify({'ok': True})
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5001, debug=True)
