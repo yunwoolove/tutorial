@@ -10,7 +10,7 @@ ENV MYSQL_DATABASE=memories
 # 3. 로컬 PC의 설정 파일 및 초기화 스크립트를 컨테이너 내부로 복사 (굽기)
 COPY ./mysql/conf/my.cnf /etc/mysql/conf.d/my.cnf
 
-COPY ./memories.sql /docker-entrypoint-initdb.d/memories.sql
+COPY ./mysql/memories.sql /docker-entrypoint-initdb.d/memories.sql
 
 VOLUME [ "/var/lib/mysql"]
 
